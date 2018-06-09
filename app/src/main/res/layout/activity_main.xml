@@ -7,6 +7,7 @@
     android:gravity="center_horizontal">
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/music_main"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -20,6 +21,8 @@
         android:layout_height="wrap_content"
         android:text="双人对战"
         android:layout_marginTop="200dp"
+        android:background="#7f8800ff"
+        android:visibility="invisible"
         style="@style/Widget.AppCompat.Button.Colored"
         />
     <Button
@@ -29,15 +32,19 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/second_game"
         android:text="人机对战"
+        android:background="#7f8800ff"
+        android:visibility="invisible"
         android:layout_marginTop="160dp"/>
 
     <Button
         android:id="@+id/black"
+        android:visibility="invisible"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/ai_game"
         android:layout_marginTop="160dp"
+        android:background="#7f8800ff"
         android:text="退出游戏" />
 
 

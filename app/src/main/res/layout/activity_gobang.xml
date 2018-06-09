@@ -86,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#7f00d4ff"
                 android:text="悔棋" />
 
             <Button
@@ -94,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#7f00d4ff"
                 android:text="重新开始" />
         </LinearLayout>
     </LinearLayout>
