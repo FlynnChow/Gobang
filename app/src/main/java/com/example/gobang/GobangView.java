@@ -381,6 +381,35 @@ public class GobangView extends View {
                 ai.add(new Point(x-4,y+4));return new Point(x-4,y+4);
             }
         }
+
+        for(Point p:ai){
+            int x=p.x;
+            int y=p.y;
+            if(ai.contains(new Point(x+1,y))&&ai.contains(new Point(x+3,y))&&ai.contains(new Point(x+2,y))&&pr.contains(new Point(x+2,y))&&ai.contains(new Point(x-1,y))&&pr.contains(new Point(x-1,y))&&ai.contains(new Point(x+4,y))&&pr.contains(new Point(x+4,y))&&XY(x+2,y)==0){
+                ai.add(new Point(x+2,y));return new Point(x+2,y);
+            }
+            if(ai.contains(new Point(x-1,y))&&ai.contains(new Point(x-3,y))&&ai.contains(new Point(x-2,y))&&pr.contains(new Point(x-2,y))&&ai.contains(new Point(x+1,y))&&pr.contains(new Point(x+1,y))&&ai.contains(new Point(x-4,y))&&pr.contains(new Point(x-4,y))&&XY(x-2,y)==0){
+                ai.add(new Point(x-2,y));return new Point(x-2,y);
+            }
+            if(ai.contains(new Point(x,y+1))&&ai.contains(new Point(x,y+3))&&ai.contains(new Point(x,y+2))&&pr.contains(new Point(x,y+2))&&ai.contains(new Point(x,y-1))&&pr.contains(new Point(x,y-1))&&ai.contains(new Point(x,y+4))&&pr.contains(new Point(x,y+4))&&XY(x,y+2)==0){
+                ai.add(new Point(x,y+2));return new Point(x,y+2);
+            }
+            if(ai.contains(new Point(x,y-1))&&ai.contains(new Point(x,y-3))&&ai.contains(new Point(x,y-2))&&pr.contains(new Point(x,y-2))&&ai.contains(new Point(x,y+1))&&pr.contains(new Point(x,y+1))&&ai.contains(new Point(x,y-4))&&pr.contains(new Point(x,y-4))&&XY(x,y-2)==0){
+                ai.add(new Point(x,y-2));return new Point(x,y-2);
+            }
+            if(ai.contains(new Point(x+1,y+1))&&ai.contains(new Point(x+3,y+3))&&ai.contains(new Point(x+2,y+2))&&pr.contains(new Point(x+2,y+2))&&ai.contains(new Point(x-1,y-1))&&pr.contains(new Point(x-1,y-1))&&ai.contains(new Point(x+4,y+4))&&pr.contains(new Point(x+4,y+4))&&XY(x+2,y+2)==0){
+                ai.add(new Point(x+2,y+2));return new Point(x+2,y+2);
+            }
+            if(ai.contains(new Point(x-1,y-1))&&ai.contains(new Point(x-3,y-3))&&ai.contains(new Point(x-2,y-2))&&pr.contains(new Point(x-2,y-2))&&ai.contains(new Point(x+1,y+1))&&pr.contains(new Point(x+1,y+1))&&ai.contains(new Point(x-4,y-4))&&pr.contains(new Point(x-4,y-4))&&XY(x-2,y-2)==0){
+                ai.add(new Point(x-2,y-2));return new Point(x-2,y-2);
+            }
+            if(ai.contains(new Point(x+1,y-1))&&ai.contains(new Point(x+3,y-3))&&ai.contains(new Point(x+2,y-2))&&pr.contains(new Point(x+2,y-2))&&ai.contains(new Point(x-1,y+1))&&pr.contains(new Point(x-1,y+1))&&ai.contains(new Point(x+4,y-4))&&pr.contains(new Point(x+4,y-4))&&XY(x+2,y-2)==0){
+                ai.add(new Point(x+2,y-2));return new Point(x+2,y-2);
+            }
+            if(ai.contains(new Point(x-1,y+1))&&ai.contains(new Point(x-3,y+3))&&ai.contains(new Point(x-2,y+2))&&pr.contains(new Point(x-2,y+2))&&ai.contains(new Point(x+1,y-1))&&pr.contains(new Point(x+1,y-1))&&ai.contains(new Point(x-4,y+4))&&pr.contains(new Point(x-4,y+4))&&XY(x-2,y+2)==0){
+                ai.add(new Point(x-2,y+2));return new Point(x-2,y+2);
+            }
+        }
         for (Point p:ai){
             int x=p.x;
             int y=p.y;
