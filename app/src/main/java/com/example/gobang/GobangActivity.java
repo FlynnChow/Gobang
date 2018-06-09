@@ -2,6 +2,8 @@ package com.example.gobang;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +26,10 @@ public class GobangActivity extends AppCompatActivity {
     Button huiqi;
     private static TextView huiqitext;
     private static TextView time;
+    private static double times2=0;
     Button re;
+    private SoundPool soundPool;
+    private int soundID;
     private GobangView view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,8 @@ public class GobangActivity extends AppCompatActivity {
             }
         });
         final ImageView music=(ImageView) findViewById(R.id.music);
+        soundPool=new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        soundID = soundPool.load(this, R.raw.clicks, 1);
         music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,12 +68,14 @@ public class GobangActivity extends AppCompatActivity {
         huiqi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                soundPool.play(soundID, 0.5f, 0.5f, 0, 0, 1);
                 view.huiqi();
             }
         });
         re.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                soundPool.play(soundID, 0.5f, 0.5f, 0, 0, 1);
                 view.re();
             }
         });
@@ -86,11 +95,11 @@ public class GobangActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    time.setText(TIME + times + "秒");
+                                    time.setText(TIME + (int)(times+times2) + "秒");
                                 }
                             });
-                            Thread.sleep(1000);
-                            times++;
+                            Thread.sleep(100);
+                            times2+=0.1;
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

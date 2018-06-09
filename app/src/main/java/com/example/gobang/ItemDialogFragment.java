@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -19,7 +18,7 @@ public class ItemDialogFragment extends DialogFragment {
         builder.setTitle(title).setItems(items, onClickListener);
         AlertDialog dialog=builder.create();
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-        lp.alpha = 0.5f;
+        lp.alpha = 0.6f;
         dialog.getWindow().setAttributes(lp);
         return dialog;
     }

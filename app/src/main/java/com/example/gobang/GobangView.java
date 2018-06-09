@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +19,8 @@ import java.util.List;
 import java.util.Random;
 
 public class GobangView extends View {
+    private SoundPool soundPool;
+    private int soundID;
     private static final String TAG = "GobangView";
     public static final int WHITE_CHESS=1;
     public static final int BLACK_CHESS=2;
@@ -84,6 +88,8 @@ public class GobangView extends View {
         }
     }
     private void init(){
+        soundPool=new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+        soundID = soundPool.load(getContext(), R.raw.chessmusic, 1);
         WindowManager m=(WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         blackChess= BitmapFactory.decodeResource(getResources(),R.drawable.black);
         whiteChess=BitmapFactory.decodeResource(getResources(),R.drawable.white);
@@ -104,6 +110,7 @@ public class GobangView extends View {
                         e.printStackTrace();
                     }
                     if(startGame){
+                        soundPool.play(soundID, 0.5f, 0.5f, 0, 0, 1);
                             myBlackChess.add(new Point(8,8));
                             p_ai=new Point(8,8);
                             isBlack=!isBlack;
@@ -141,6 +148,7 @@ public class GobangView extends View {
                 }else{
                     myWhiteChess.add(p);
                 }
+                soundPool.play(soundID, 0.5f, 0.5f, 0, 0, 1);
                 if(isBlack){
                     checkGame(myBlackChess);
                 }else{
@@ -149,6 +157,12 @@ public class GobangView extends View {
                 isBlack=!isBlack;
                 invalidate();
                 if(aiGame&&!GameOver){
+                    try{
+                        Thread.sleep(500);
+                        soundPool.play(soundID, 0.5f, 0.5f, 0, 0, 1);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                     if(isBlack){
                         p_ai=ai(myWhiteChess,myBlackChess);
                         invalidate();
@@ -196,6 +210,11 @@ public class GobangView extends View {
     }
     private void checkGame(List<Point> ps){
         for(Point p:ps){
+            if ((myBlackChess.size()+myWhiteChess.size())==225){
+                Toast.makeText(getContext(),"平局",Toast.LENGTH_LONG).show();
+                GameOver=true;
+                first=false;
+            }
             if(checkWin(p,ps)){
                 first=false;
                 if (isBlack){
